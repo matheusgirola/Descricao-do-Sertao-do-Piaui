@@ -910,6 +910,50 @@ TROCAS = [
         """As localizações seguem a identificação proposta em <em>Os Jesuítas no Piauí</em>, pp. 29–34, projetadas sobre a carta de 1850 — cerca de 150 anos posterior ao relato.""",
         """As localizações partem da Figura 3 de <em>Os Jesuítas no Piauí</em> (Baptista, 1986, p. 36), georreferenciada por ajuste da silhueta do estado contra a malha do IBGE, e são depois encaixadas no curso d'água que o próprio relato nomeia, quando esse curso ainda existe com o mesmo nome na carta de hoje. O <strong>espaçamento ao longo do rio vem do próprio texto</strong>: as 94 distâncias em léguas que o padre anota de uma fazenda à seguinte (&ldquo;dista da que se segue 3 léguas&rdquo;) são acumuladas e projetadas sobre o curso, de modo que a figura fique responsável apenas por onde a corrente de fazendas começa e para que lado corre. A legenda das cores e dos símbolos está na coluna à esquerda da carta, junto do título e das escalas.""",
     ),
+    # notas de rodape de Claudio Melo na edicao do relato, com a numeracao do livro
+    ("de uma a outra qualidade [...],", "de uma a outra qualidade [...]<sup>3</sup>,"),
+    (
+        "(conforme o rol dos confessados).",
+        "(conforme o rol dos confessados)<sup>4</sup>.",
+    ),
+    (
+        "nomes dos homens que nelas estão por arrendamento.</p>",
+        'nomes dos homens que nelas estão por arrendamento.</p>\n  <p class="nota"><sup>3</sup> Esta reticência não existe no texto. Como é ali que o pensamento se corta, fiz então esta pontuação. (Nota do editor.)</p>\n  <p class="nota"><sup>4</sup> Este Rol dos Confessados ainda não nos é conhecido. (Nota do editor.)</p>',
+    ),
+    (
+        "nem de entre eles se tem apanhado língua,",
+        "nem de entre eles se tem apanhado língua<sup>5</sup>,",
+    ),
+    (
+        "lanças e cachaporras.</p>",
+        'lanças e cachaporras.</p>\n  <p class="nota"><sup>5</sup> Os Rodeleiros ficavam na porção da Bahia, então pertencente a Pernambuco. Nas suas andanças, várias vezes atacaram os moradores do Piauí. A expressão &ldquo;não se tem apanhado língua&rdquo; significa que ainda não se aprendeu a língua deles. (Nota do editor.)</p>',
+    ),
+    ("à serra da Guapava,<sup>*</sup>", "à serra da Guapava,<sup>6</sup>"),
+    (
+        '<p class="nota"><sup>*</sup> Serra da Guapava = serra da Ibiapaba, na divisa com o Ceará, onde havia missão jesuíta.</p>',
+        '<p class="nota"><sup>6</sup> Serra da Ibiapaba. (Nota do editor.)</p>',
+    ),
+    (
+        "chamada de Domingos Afonso;<sup>*</sup>",
+        "chamada de Domingos Afonso;<sup>7</sup>",
+    ),
+    (
+        '<p class="nota"><sup>*</sup> Nota do editor: não é Domingos Afonso, e sim Paulo Afonso.</p>',
+        '<p class="nota"><sup>7</sup> Não é Domingos Afonso, e sim, Paulo Afonso. (Nota do editor.)</p>',
+    ),
+    ("XIX — Riacho Maratamhaim <span", "XIX — Riacho Maratamhaim<sup>8</sup> <span"),
+    (
+        '<p class="nota">Nota do editor: é o rio Maratauã (Marataoã), nas terras dos Alongazes, vertentes do norte.</p>',
+        '<p class="nota"><sup>8</sup> É o Rio Maratauam. (Nota do editor.)</p>',
+    ),
+    (
+        "<h2>Apêndice — Relação dos índios</h2>",
+        '<h2>Apêndice — Relação dos índios</h2>\n  <p class="nota"><em>Como apêndice deste documento, conforme foi citado no seu final, segue-se a Relação dos Índios existentes no Piauí, que eram do conhecimento do Pe. Miguel de Carvalho.</em> (Nota do editor.)</p>',
+    ),
+    (
+        '<p class="nota">* As tribos assinaladas com asterisco não são piauienses, mas vez por outra entravam em lutas com os fazendeiros do Piauí. (Nota do editor.)</p>',
+        '<p class="nota">* As tribos assinaladas com asteriscos não são piauienses, mas vez por outra entravam em lutas com os fazendeiros do Piauí. (Nota do editor.)</p>',
+    ),
 ]
 
 
@@ -996,7 +1040,7 @@ def main():
     corpo = "\n".join(f"{ab}{body}</section>" for ab, (_, body) in zip(novas, secs))
     corpo = com_km(corpo)
     for velho, novo in TROCAS:
-        assert velho in corpo, velho[:60]
+        assert corpo.count(velho) == 1, velho[:60]
         corpo = corpo.replace(velho, novo)
     # as notas que comentam a carta de 1850 nao fazem sentido sobre a base do IBGE
     corpo, n_1850 = re.subn(
@@ -1011,6 +1055,12 @@ def main():
     js = js.split("const MAPW", 1)[1].split("\n", 1)[1]
     js_core = js.rsplit("})();", 1)[0].rstrip()
     # a tela agora e retrato: "fit" passa a ser caber inteiro, nao preencher
+    # o indice le o h2 da secao; a chamada de nota (<sup>) nao entra no rotulo
+    js_core = js_core.replace(
+        "o.textContent=(h?h.textContent:",
+        "o.textContent=(h?[...h.childNodes].filter(c=>c.nodeName!=='SUP')"
+        ".map(c=>c.textContent).join(''):",
+    )
     js_core = js_core.replace(
         "function fitZoom(){return Math.max(innerWidth/MAPW, innerHeight/MAPH);}",
         "function fitZoom(){const b=folha();return Math.min(b.fw/MAPW, b.fh/MAPH);}",
