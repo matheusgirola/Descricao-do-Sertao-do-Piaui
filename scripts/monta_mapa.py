@@ -18,6 +18,7 @@ import base_svg as B
 
 SRC_HTML = "dados/fontes/descricao_interativa_1.html"
 OUT = "descricao_interativa_bcim.html"
+LEGUA_KM = 6.2  # legua de sesmaria em linha reta (a mesma da escala do cartucho)
 
 # rios que o relato de 1697 percorre -> nome na BC250 (mesma tabela de snap_rios.py).
 # Sao desenhados a partir da BC250, e nao da BCIM que faz o resto da carta: e nela
@@ -104,6 +105,32 @@ CIDADES = [
 
 def esc(s):
     return html.escape(str(s), quote=True)
+
+
+# ---------------------------------------------------------------- leguas -> km
+# Ao lado de cada "N leguas" do relato vai o valor em km, entre colchetes de
+# editor. So nos paragrafos: titulos e o indice ficam como o padre escreveu.
+_EXTENSO = {"uma": 1, "um": 1, "duas": 2, "dois": 2, "três": 3, "quatro": 4}
+_LEGUAS = re.compile(r"\b(\d+|uma|duas|três|quatro) (léguas?)\b")
+
+
+def _km(n):
+    km = n * LEGUA_KM
+    km = round(km) if km < 100 else round(km, -1)
+    return f"{km:,.0f}".replace(",", ".")
+
+
+def com_km(corpo):
+    def leguas(m):
+        n = int(m.group(1)) if m.group(1).isdigit() else _EXTENSO[m.group(1)]
+        return f'{m.group(0)} <span class="km">[{_km(n)} km]</span>'
+
+    return re.sub(
+        r"<p\b.*?</p>",
+        lambda p: _LEGUAS.sub(leguas, p.group(0)),
+        corpo,
+        flags=re.DOTALL,
+    )
 
 
 # ---------------------------------------------------------------- rotulagem
@@ -579,7 +606,7 @@ def cartucho():
         txt(y0 + 84, rot, 40, x=x0 + w + 62, anc="start")
 
     barra(2824, 200, 50, 1.0, "km", (0, 50, 100, 150, 200))
-    barra(2962, 30, 5, 6.2, "léguas", (0, 10, 20, 30))
+    barra(2962, 30, 5, LEGUA_KM, "léguas", (0, 10, 20, 30))
     txt(3126, "a légua de sesmaria vale ~6,2 km em linha reta;", 38, opacity=".85")
     txt(
         3168,
@@ -967,6 +994,7 @@ def main():
     assert n == 125, n
 
     corpo = "\n".join(f"{ab}{body}</section>" for ab, (_, body) in zip(novas, secs))
+    corpo = com_km(corpo)
     for velho, novo in TROCAS:
         assert velho in corpo, velho[:60]
         corpo = corpo.replace(velho, novo)
@@ -1081,6 +1109,7 @@ def main():
   body.arrastando #viewport{cursor:grabbing}
   #mapwrap.nofx{transition:none}
   .pt-aprox i{background:#8a63c4}
+  .km{font-size:.85em;color:#8a6a45;white-space:nowrap}
   .pt em s{display:block;text-decoration:none;font-style:normal;font-size:9.5px;
     font-family:'Helvetica Neue',Arial,sans-serif;color:#6b5a3e;margin-top:2px}
 """ % (B.W, B.H)  # noqa: UP031 -- CSS cheio de chaves
