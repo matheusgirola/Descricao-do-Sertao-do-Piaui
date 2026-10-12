@@ -1,0 +1,20 @@
+# Ambiente e ferramentas
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.DS_Store
+.claude/settings.local.json
+
+# Fontes com direitos autorais (links no README)
+dados/fontes/*.pdf
+
+# Bases do IBGE grandes demais para o git (links no README)
+dados/ibge/bcim_2016_21_11_2018.gpkg
+dados/ibge/bcim_2016_shapefiles_21-11-2018/
+dados/ibge/*.zip
+
+# Vistas de conferência: regeneradas por scripts/qc_mapa.py
+qc/

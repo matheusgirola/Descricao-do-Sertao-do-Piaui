@@ -1,0 +1,41 @@
+[project]
+name = "mapa-fazendas-1697"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "geopandas>=1.2.0",
+    "numpy>=2.5.4",
+    "pandas>=3.0.6",
+    "pillow>=12.3.0",
+    "pyarrow>=26.0.0",
+    "pyogrio>=0.13.0",
+    "pypdf>=6.20.0",
+    "scipy>=1.18.1",
+    "shapely>=2.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.16.2",
+    "pyrefly>=1.3.2",
+    "pytest>=9.1.1",
+    "ruff>=0.17.0",
+]
+
+[tool.ruff]
+target-version = "py313"
+src = [".", "scripts"]
+extend-exclude = ["dados", "arquivo"]
+
+[tool.ruff.lint]
+# padrões do ruff (E4, E7, E9, F) + ordenação de imports
+extend-select = ["I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# os scripts do pipeline são módulos soltos em scripts/, não um pacote
+pythonpath = ["scripts"]
+
+[tool.pyrefly]
+project-includes = ["scripts", "tests"]
+search-path = ["scripts"]

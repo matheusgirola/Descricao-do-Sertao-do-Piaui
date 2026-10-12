@@ -1,0 +1,126 @@
+numero,fazenda,corpo_dagua,tabela,lon,lat,lon_fig3,lat_fig3,metodo,desloc_km,rio_bcim,nota_rio,legua_acum,km_por_legua,ancora
+1,Cachoeira,rio Canindé,1,-41.086651,-8.199764,-40.893746,-8.259672,léguas,22.28,Rio Canindé,identificação direta,0.0,7.14,cabeceira
+2,Boqueirão,rio Canindé,1,-41.291295,-8.101891,-41.018637,-8.189734,léguas,31.6,Rio Canindé,identificação direta,5.0,7.14,cabeceira
+3,Porções de São Miguel,rio Canindé,1,-41.437055,-8.041696,-41.337277,-8.061682,léguas,11.22,Rio Canindé,identificação direta,8.0,7.14,cabeceira
+4,Campo Grande,rio Canindé,1,-41.547156,-7.930504,-41.468011,-7.976722,léguas,10.13,Rio Canindé,identificação direta,11.0,7.14,cabeceira
+5,Campo Largo,rio Canindé,1,-41.721938,-7.749526,-41.601482,-7.915628,léguas,22.77,Rio Canindé,identificação direta,16.0,7.14,cabeceira
+6,Torre,rio Canindé,1,-41.808964,-7.65927,-41.704054,-7.804055,léguas,19.84,Rio Canindé,identificação direta,18.0,7.14,cabeceira
+7,Ilha,rio Canindé,1,-41.858615,-7.503537,-41.907258,-7.597696,léguas,11.78,Rio Canindé,identificação direta,22.0,7.14,cabeceira
+8,Graciosa,rio Canindé,1,-41.881096,-7.416905,-41.974572,-7.445928,léguas,10.81,Rio Canindé,identificação direta,24.0,7.14,cabeceira
+9,Várzea Branca,rio Canindé,1,-41.914782,-7.247764,-41.983945,-7.26774,léguas,7.95,Rio Canindé,identificação direta,28.0,7.14,cabeceira
+10,Passagem,rio Canindé,1,-41.979058,-7.108288,-42.012655,-7.180701,léguas,8.87,Rio Canindé,identificação direta,31.0,7.14,cabeceira
+11,Boa Vista,rio Canindé,1,-42.044357,-7.019146,-42.116091,-6.992579,léguas,8.46,Rio Canindé,identificação direta,33.0,7.14,cabeceira
+12,Aldeia,rio Canindé,1,-42.1501,-6.964169,-42.223478,-6.947293,léguas,8.32,Rio Canindé,identificação direta,35.0,7.14,cabeceira
+13,Porto Alegre,rio Canindé,1,-42.275815,-6.871527,-42.342096,-6.916252,léguas,8.86,Rio Canindé,identificação direta,38.0,7.14,cabeceira
+14,Tatu,rio Canindé,1,-42.37721,-6.802371,-42.433338,-6.863882,léguas,9.24,Rio Canindé,identificação direta,41.0,7.14,cabeceira
+15,Gameleira,rio Canindé,1,-42.470064,-6.791863,-42.476657,-6.785668,léguas,1.0,Rio Canindé,identificação direta,43.0,7.14,cabeceira
+16,Retiro,rio Canindé,1,-42.517158,-6.716973,-42.583479,-6.690693,léguas,7.89,Rio Canindé,identificação direta,45.0,7.14,cabeceira
+17,Barra,rio Canindé,1,-42.625145,-6.689866,-42.693051,-6.605809,léguas,12.0,Rio Canindé,identificação direta,47.0,7.14,cabeceira
+18,Craíbas,rio Canindé,1,-42.701838,-6.615743,-42.70334,-6.538428,léguas,8.61,Rio Canindé,identificação direta,49.0,7.14,cabeceira
+19,Sussuapara,rio Canindé,1,-42.712481,-6.496152,-42.711667,-6.385344,léguas,12.34,Rio Canindé,identificação direta,51.0,7.14,cabeceira
+20,Santa Rosa,rio Canindé,1,-42.854395,-6.249674,-42.833194,-6.306845,léguas,6.78,Rio Canindé,identificação direta,59.0,7.14,cabeceira
+21,Jenipapo,rio Itaim Mirim,2,-40.785771,-8.16509,-40.790312,-8.165518,drenagem_próxima,0.5,(sem nome),Itaim Mirim = rio Itaim atual,0.0,14.67,barra
+22,Tábua,rio Itaim Mirim,2,-41.228812,-7.716322,-41.118334,-8.023907,léguas,36.34,Rio Itaim,Itaim Mirim = rio Itaim atual,2.0,14.67,barra
+23,Serra,rio Itaim Mirim,2,-41.268086,-7.615513,-41.549013,-7.467064,léguas,35.13,Rio Itaim,Itaim Mirim = rio Itaim atual,3.0,14.67,barra
+24,Torta,rio Itaim Mirim,2,-41.492632,-7.396618,-41.653561,-7.258253,léguas,23.51,Rio Itaim,Itaim Mirim = rio Itaim atual,6.0,14.67,barra
+25,Tranqueira,rio Itaim Mirim,2,-41.617636,-7.222586,-41.896678,-7.122961,léguas,32.75,Rio Itaim,Itaim Mirim = rio Itaim atual,8.0,14.67,barra
+26,Canavieira,rio Itaim Mirim,2,-41.821504,-7.134028,-41.955689,-7.08017,léguas,15.99,Rio Itaim,Itaim Mirim = rio Itaim atual,10.0,14.67,barra
+27,Saco,rio Itaim Mirim,2,-42.022562,-7.033542,-42.054672,-7.075451,léguas,5.86,Rio Itaim,Itaim Mirim = rio Itaim atual,12.0,14.67,barra
+28,Buraco,riacho Guaribas,3,-41.265496,-6.73447,-41.150572,-6.694891,léguas,13.45,Rio Guaribas,identificação direta,0.0,8.61,barra
+29,Pedra,riacho Guaribas,3,-41.338838,-6.864528,-41.286073,-6.696904,léguas,19.55,Rio Guaribas,identificação direta,2.0,8.61,barra
+30,Sussuapara,riacho Guaribas,3,-41.390408,-7.023748,-41.415541,-6.739011,léguas,31.82,Rio Guaribas,identificação direta,5.0,8.61,barra
+31,Sambambaia,riacho Guaribas,3,-41.490068,-7.115269,-41.467333,-6.951707,léguas,18.38,Rio Guaribas,identificação direta,7.0,8.61,barra
+32,Buqueirão,riacho Guaribas,3,-41.567592,-7.150632,-41.544182,-7.058288,léguas,10.6,Rio Guaribas,identificação direta,9.0,8.61,barra
+33,Tucano,riacho Guaribas,3,-41.66449,-7.210583,-41.786243,-7.149075,léguas,15.09,Rio Guaribas,identificação direta,11.0,8.61,barra
+34,Frade,riacho do Frade,4,-41.875711,-6.905279,-41.835469,-6.846016,rio_nomeado,7.96,Riacho do Frade / Rio do Frade,identificação direta,0.0,,
+35,Talhada,riacho Serra Talhada,5,-42.007302,-6.868457,-42.127043,-6.76857,rio_nomeado,17.29,Ribeirão Talhado,Serra Talhada = ribeirão Talhado,0.0,,
+36,Corrente,riacho Corrente,6,-42.335179,-6.680159,-42.347179,-6.682826,drenagem_próxima,1.36,Riacho Rancharia,identificação direta,0.0,,
+37,Mocambo,riacho Mocambo,7,-42.626451,-6.628642,-42.547387,-6.733233,rio_nomeado,14.56,Riacho do Mocambo / Riacho Mocambo / Rio Mocambo,identificação direta,0.0,,
+38,Saco,riacho da Tranqueira,8,-42.026147,-7.796438,-42.015674,-7.756173,léguas,4.63,Ribeirão da Tranqueira / Riacho Tranqueira / Riacho da Tranqueira,as 5 fazendas somam ~9 léguas no relato,0.0,14.67,barra
+39,Lagoa Grande,riacho da Tranqueira,8,-42.0414,-7.710023,-42.08645,-7.65657,léguas,7.75,Ribeirão da Tranqueira / Riacho Tranqueira / Riacho da Tranqueira,as 5 fazendas somam ~9 léguas no relato,1.0,14.67,barra
+40,Tranqueira,riacho da Tranqueira,8,-42.00871,-7.486118,-42.101658,-7.5004,léguas,10.38,Ribeirão da Tranqueira / Riacho Tranqueira / Riacho da Tranqueira,as 5 fazendas somam ~9 léguas no relato,3.0,14.67,barra
+41,Sussuapara,riacho da Tranqueira,8,-42.197123,-7.251089,-42.399675,-7.248031,léguas,22.37,Ribeirão da Tranqueira / Riacho Tranqueira / Riacho da Tranqueira,as 5 fazendas somam ~9 léguas no relato,6.0,14.67,barra
+42,Salinas,riacho da Tranqueira,8,-42.478088,-7.071271,-42.580113,-6.841157,léguas,27.99,Ribeirão da Tranqueira / Riacho Tranqueira / Riacho da Tranqueira,as 5 fazendas somam ~9 léguas no relato,9.0,14.67,barra
+43,Onça,rio Itaim Açu,9,-41.233438,-5.047892,-41.015432,-5.027788,léguas,24.28,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,0.0,14.22,
+44,Anta,rio Itaim Açu,9,-41.360926,-5.010878,-41.332964,-4.921029,léguas,10.47,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,2.0,14.22,
+45,Boqueirão,rio Itaim Açu,9,-41.64455,-5.132775,-41.688137,-5.044773,léguas,10.92,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,5.0,14.22,
+46,Juazeiro,rio Itaim Açu,9,-41.782715,-5.314025,-42.070217,-5.421762,léguas,34.05,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,7.0,14.22,
+47,Sambaíba,rio Itaim Açu,9,-41.958212,-5.444914,-42.219209,-5.511191,léguas,29.85,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,9.0,14.22,
+48,Poti,rio Itaim Açu,9,-42.219657,-5.668681,-42.329307,-5.63454,léguas,12.73,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,12.0,14.22,
+49,São Lázaro,rio Itaim Açu,9,-42.469139,-5.473632,-42.481644,-5.526293,léguas,6.02,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,15.0,14.22,
+50,São Pedro,rio Itaim Açu,9,-42.704122,-5.2501,-42.642163,-5.318044,léguas,10.22,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,18.0,14.22,
+51,São Cosme,rio Itaim Açu,9,-42.802283,-5.021568,-42.784664,-5.117791,léguas,10.89,Rio Poti,o “Itaim Açu” da Figura 3 é o rio Poti,21.0,14.22,
+52,Dor de Barriga,riacho do Cais,10,-41.419546,-5.272407,-41.23871,-5.339208,léguas,21.38,Rio do Cais,identificação direta,0.0,14.67,
+53,Bigode,riacho do Cais,10,-41.677311,-5.441036,-41.815535,-5.407826,léguas,15.76,Rio do Cais,identificação direta,3.0,14.67,
+54,Cabeça do Tapuyo,riacho Cabeça do Tapuio,11,-41.155847,-5.531176,-41.158384,-5.540279,drenagem_próxima,1.05,(sem nome),topônimo perdido: não existe na BC250,0.0,,
+55,Olho d'Água,riacho Cabeça do Tapuio,11,-41.410387,-5.461712,-41.407894,-5.453385,drenagem_próxima,0.97,Rio São Miguel,topônimo perdido: não existe na BC250,2.0,,
+56,Sítio da Cruz,riacho Cabeça do Tapuio,11,-41.578004,-5.456142,-41.57351,-5.452784,drenagem_próxima,0.62,(sem nome),topônimo perdido: não existe na BC250,4.0,,
+57,Canabrava,riacho Canabrava,12,-41.71285,-5.63637,-41.713013,-5.667024,léguas,3.41,Riacho Iningá / Riacho da Ininga,a fazenda 58 “Iningas” fixa o riacho,0.0,10.45,barra
+58,Iningas,riacho Canabrava,12,-41.875175,-5.565239,-42.022474,-5.489724,léguas,18.36,Riacho Iningá / Riacho da Ininga,a fazenda 58 “Iningas” fixa o riacho,3.0,10.45,barra
+59,Sítio dos Mendes,riacho São Nicolau,13,-41.010387,-5.940399,-41.002415,-5.943238,drenagem_próxima,0.94,(sem nome),identificação direta,0.0,6.66,barra
+60,São Nicolau,riacho São Nicolau,13,-41.553427,-5.916448,-41.459089,-5.792979,léguas,17.26,Rio São Nicolau,identificação direta,3.0,6.66,barra
+61,Sítio das Pedras,riacho São Nicolau,13,-42.01196,-5.764424,-41.865785,-5.773136,léguas,16.22,Rio São Nicolau,identificação direta,13.0,6.66,barra
+62,Santo Antônio,riacho São Nicolau,13,-42.105818,-5.742183,-42.128027,-5.753818,léguas,2.78,Rio São Nicolau,identificação direta,15.0,6.66,barra
+63,Vitória,riacho Vitória,14,-41.453644,-5.884391,-41.447946,-6.044499,rio_nomeado,17.83,Riacho Vitória,identificação direta,0.0,,
+64,Serra Negra,riacho Negro,15,-41.734724,-6.053705,-41.744161,-6.124211,rio_nomeado,7.92,Riacho da Serra Negra,a fazenda 64 “Serra Negra”,0.0,,
+65,São Vitor,riacho São Vítor,16,-41.273376,-6.243292,-41.279549,-6.236722,drenagem_próxima,1.0,Riacho Saco Novo,topônimo perdido: não existe na BC250,0.0,,
+66,São Mateus,riacho São Vítor,16,-41.609081,-6.311868,-41.629097,-6.322694,drenagem_próxima,2.52,(sem nome),topônimo perdido: não existe na BC250,4.0,,
+67,Belo Jardim de Santa Cruz,riacho São Vítor,16,-42.202884,-6.021119,-42.187575,-6.019916,drenagem_próxima,1.7,(sem nome),topônimo perdido: não existe na BC250,7.0,,
+68,Tapera,riacho São Vítor,16,-42.219857,-5.681368,-42.215516,-5.670851,drenagem_próxima,1.27,Riacho do Rodeador,topônimo perdido: não existe na BC250,10.0,,
+69,São Francisco Xavier,riacho Santa Catarina,17,-41.539583,-6.539128,-41.554047,-6.54566,drenagem_próxima,1.76,(sem nome),topônimo perdido: não existe na BC250,0.0,,
+70,Sítio da Catarina,riacho Santa Catarina,17,-41.774214,-6.433508,-41.765774,-6.434693,drenagem_próxima,0.94,(sem nome),topônimo perdido: não existe na BC250,3.0,,
+71,Gado Bravo,riacho São Vicente,18,-41.827343,-6.620709,-41.89259,-6.594939,léguas,7.76,Rio São Vicente / Riacho São Vicente,identificação direta,0.0,4.89,
+72,Santo Antônio,riacho São Vicente,18,-41.917112,-6.488512,-41.923813,-6.511117,léguas,2.62,Rio São Vicente / Riacho São Vicente,identificação direta,4.0,4.89,
+73,São Vicente,riacho São Vicente,18,-41.990471,-6.412919,-41.958198,-6.409506,léguas,3.59,Rio São Vicente / Riacho São Vicente,identificação direta,7.0,4.89,
+74,Alegrete,riacho São Vicente,18,-42.046511,-6.308905,-42.090676,-6.318723,léguas,5.01,Rio São Vicente / Riacho São Vicente,identificação direta,10.0,4.89,
+75,Craíbas,riacho das Berlengas,19,-42.288506,-6.415366,-42.358532,-6.547749,léguas,16.65,Rio Berlengas,"a BC250 grafa “Berlengas”; a BCIM, “Beriengas”",0.0,11.53,
+76,Berlengas,riacho das Berlengas,19,-42.325552,-6.22388,-42.516849,-6.138103,léguas,23.22,Rio Berlengas,"a BC250 grafa “Berlengas”; a BCIM, “Beriengas”",2.0,11.53,
+77,São João das Flores,riacho das Berlengas,19,-42.404765,-5.849318,-42.447123,-5.760174,léguas,10.98,Rio Berlengas,"a BC250 grafa “Berlengas”; a BCIM, “Beriengas”",7.0,11.53,
+78,Santo Antônio,riacho Santo Antônio,20,-42.644025,-5.493894,-42.650642,-5.487277,drenagem_próxima,1.04,(sem nome),topônimo perdido: não existe na BC250,0.0,,
+79,Ginipapo,riacho Maratauam,21,-42.355665,-4.883533,-42.273078,-5.138014,léguas,29.77,Rio Maratoã,Maratauam = rio Marataoã/Maratoã,0.0,12.11,cabeceira
+80,Carnahiba,riacho Maratauam,21,-42.428648,-4.519908,-42.21303,-4.785095,léguas,38.0,Rio Maratoã,Maratauam = rio Marataoã/Maratoã,4.0,12.11,cabeceira
+81,Estreito,riacho Maratauam,21,-42.409466,-4.35372,-42.202833,-4.5184,léguas,29.36,Rio Maratoã,Maratauam = rio Marataoã/Maratoã,6.0,12.11,cabeceira
+82,Boa Ceia,riacho Maratauam,21,-42.284971,-4.25152,-42.253692,-4.256493,léguas,3.52,Rio Maratoã,Maratauam = rio Marataoã/Maratoã,9.0,12.11,cabeceira
+83,Sítio da Cobra,riacho das Cobras,22,-41.687311,-4.781444,-41.686066,-4.792016,drenagem_próxima,1.18,(sem nome),topônimo perdido: não existe na BC250,0.0,,
+84,Barra,riacho das Cobras,22,-42.141134,-4.846875,-42.139643,-4.845655,drenagem_próxima,0.21,Riacho da Pintada,topônimo perdido: não existe na BC250,3.0,,
+85,Serra,riacho Bitorocara,23,-42.617835,-5.144505,-42.630071,-5.136719,drenagem_próxima,1.61,(sem nome),topônimo perdido: não existe na BC250,0.0,,
+86,Bitorocara,riacho Bitorocara,23,-42.472853,-4.920158,-42.487661,-4.927858,drenagem_próxima,1.85,Riacho do Angico Branco,topônimo perdido: não existe na BC250,2.0,,
+87,Jatobá,riacho Bitorocara,23,-42.303176,-4.844649,-42.317509,-4.862356,drenagem_próxima,2.53,(sem nome),topônimo perdido: não existe na BC250,4.0,,
+88,Fazenda de Éguas,riachinho do Buriti,24,-41.061255,-8.367072,-41.053596,-8.365759,drenagem_próxima,0.86,(sem nome),topônimo perdido: não existe na BC250,0.0,,
+89,Almas Santas,rio Piauí,25,-43.188478,-9.260933,-43.271971,-9.084853,léguas,21.64,Rio Piauí,as 20 fazendas percorrem o rio inteiro,0.0,7.66,barra
+90,Tabuleiro Alto,rio Piauí,25,-42.528451,-9.004878,-42.477663,-8.766323,léguas,27.14,Rio Piauí,as 20 fazendas percorrem o rio inteiro,13.0,7.66,barra
+91,Curral do Campo,rio Piauí,25,-42.883754,-9.249453,-42.874504,-9.248088,afluente,1.03,(sem nome) — afluente,as 20 fazendas percorrem o rio inteiro,13.0,7.66,barra
+92,Fazenda Grande,rio Piauí,25,-42.298666,-8.89071,-41.82291,-8.58253,léguas,62.57,Rio Piauí,as 20 fazendas percorrem o rio inteiro,18.0,7.66,barra
+93,Sítio das Pimentas,rio Piauí,25,-42.293766,-8.500716,-42.288049,-8.500697,afluente,0.63,Riacho Boa Vista — afluente,as 20 fazendas percorrem o rio inteiro,18.0,7.66,barra
+94,Espinhos,rio Piauí,25,-42.1541,-8.698938,-42.312274,-8.36119,léguas,41.43,Rio Piauí,as 20 fazendas percorrem o rio inteiro,23.0,7.66,barra
+95,Salinas,rio Piauí,25,-42.139813,-8.519639,-42.407043,-8.274858,léguas,40.1,Rio Piauí,as 20 fazendas percorrem o rio inteiro,26.0,7.66,barra
+96,Cachoeira,rio Piauí,25,-42.343647,-8.226159,-42.448799,-8.143829,léguas,14.77,Rio Piauí,as 20 fazendas percorrem o rio inteiro,32.0,7.66,barra
+97,Gameleira,rio Piauí,25,-42.517545,-8.144994,-42.561665,-8.074457,léguas,9.24,Rio Piauí,as 20 fazendas percorrem o rio inteiro,35.0,7.66,barra
+98,Serra,rio Piauí,25,-42.666703,-7.951468,-42.628328,-7.986592,léguas,5.76,Rio Piauí,as 20 fazendas percorrem o rio inteiro,39.0,7.66,barra
+99,Riacho,rio Piauí,25,-42.65328,-7.716309,-42.6884,-7.843268,léguas,14.65,Rio Piauí,as 20 fazendas percorrem o rio inteiro,43.0,7.66,barra
+100,Sobrado,rio Piauí,25,-42.627898,-7.656356,-42.668329,-7.701328,léguas,6.71,Rio Piauí,as 20 fazendas percorrem o rio inteiro,44.0,7.66,barra
+101,Lagoa do Jacaré,rio Piauí,25,-42.588299,-7.604412,-42.600134,-7.542837,léguas,6.98,Rio Piauí,as 20 fazendas percorrem o rio inteiro,45.0,7.66,barra
+102,Espinheiros,rio Piauí,25,-42.55084,-7.481243,-42.661307,-7.226853,léguas,30.83,Rio Piauí,as 20 fazendas percorrem o rio inteiro,47.0,7.66,barra
+103,Lagoa das Itariz,rio Piauí,25,-42.563078,-7.366387,-42.642019,-7.04679,léguas,36.63,Rio Piauí,as 20 fazendas percorrem o rio inteiro,49.0,7.66,barra
+104,Sítio de Baixo,rio Piauí,25,-42.536588,-7.201089,-42.747922,-6.949982,léguas,36.42,Rio Piauí,as 20 fazendas percorrem o rio inteiro,52.0,7.66,barra
+105,Sussuapra,rio Piauí,25,-42.58165,-7.085751,-42.747141,-6.893633,léguas,28.14,Rio Piauí,as 20 fazendas percorrem o rio inteiro,54.0,7.66,barra
+106,Algodões,rio Piauí,25,-42.661353,-6.993529,-42.7629,-6.831605,léguas,21.23,Rio Piauí,as 20 fazendas percorrem o rio inteiro,56.0,7.66,barra
+107,Catarenz,rio Piauí,25,-42.696861,-6.884856,-42.764823,-6.772517,léguas,14.59,Rio Piauí,as 20 fazendas percorrem o rio inteiro,58.0,7.66,barra
+108,Tapera,rio Piauí,25,-42.692262,-6.647196,-42.77085,-6.662039,léguas,8.85,Rio Piauí,as 20 fazendas percorrem o rio inteiro,62.0,7.66,barra
+109,Angicos,riacho Moicatá,26,-42.928086,-7.762238,-43.042587,-7.758568,léguas,12.64,Riacho do Mucaitá / Rio Mucaitá,Moicatá = riacho Mucaitá,0.0,10.2,
+110,Moicatá,riacho Moicatá,26,-42.763626,-7.469635,-42.874377,-7.482151,léguas,12.3,Riacho do Mucaitá / Rio Mucaitá,Moicatá = riacho Mucaitá,4.0,10.2,
+111,Lagoa da Jacaré,riacho Moicatá,26,-42.731453,-7.136236,-42.756954,-7.12443,léguas,3.11,Riacho do Mucaitá / Rio Mucaitá,Moicatá = riacho Mucaitá,8.0,10.2,
+112,Maravilha,riacho Itaueira,27,-43.034746,-7.363411,-42.894668,-7.431569,léguas,17.23,Rio Itaueira,identificação direta,0.0,4.89,
+113,Batalha,riacho Itaueira,27,-43.032534,-7.275776,-42.893978,-7.2813,léguas,15.31,Rio Itaueira,identificação direta,2.0,4.89,
+114,Jacaré,riacho Itaueira,27,-43.010487,-7.151396,-42.950976,-7.085463,léguas,9.85,Rio Itaueira,identificação direta,5.0,4.89,
+115,Sítio das Flores,riacho Itaueira,27,-43.067603,-7.01104,-43.028042,-7.039545,léguas,5.4,Rio Itaueira,identificação direta,9.0,4.89,
+116,Guaribas,riacho Guaribas (2º),28,-43.305361,-7.86011,-43.299077,-7.872734,drenagem_próxima,1.57,(sem nome),topônimo perdido: não existe na BC250,0.0,,
+117,Pico,riacho Guaribas (2º),28,-43.089873,-7.463321,-43.081411,-7.466706,drenagem_próxima,1.01,Riacho da Prata,topônimo perdido: não existe na BC250,3.0,,
+118,Mato,riacho Guaribas (2º),28,-42.936176,-6.743989,-42.95224,-6.716737,drenagem_próxima,3.52,Riacho D'Anta,topônimo perdido: não existe na BC250,7.0,,
+119,Serra Vermelha,rio Gurgueia,29,-43.871005,-8.395643,-44.052983,-8.451297,léguas,20.98,Rio Gurguéia,identificação direta,0.0,6.82,barra
+120,Estreito,rio Gurgueia,29,-43.816529,-8.268681,-43.799104,-8.239944,léguas,3.73,Rio Gurguéia,identificação direta,3.0,6.82,barra
+121,Buritis,rio Gurgueia,29,-43.81621,-8.171148,-43.859364,-8.003273,léguas,19.28,Rio Gurguéia,identificação direta,5.0,6.82,barra
+122,Barreira,rio Gurgueia,29,-43.80361,-8.057486,-43.765054,-7.590177,léguas,52.19,Rio Gurguéia,identificação direta,7.0,6.82,barra
+123,Castelo,rio Gurgueia,29,-43.784355,-7.944394,-43.676781,-7.387406,léguas,63.13,Rio Gurguéia,identificação direta,9.0,6.82,barra
+124,Sítio das Mangabeiras,rio Gurgueia,29,-43.800086,-7.78048,-43.627681,-7.130036,léguas,74.86,Rio Gurguéia,identificação direta,12.0,6.82,barra
+125,Sítio Real,rio Gurgueia,29,-43.390391,-6.834104,-43.504322,-6.855404,léguas,12.81,Rio Gurguéia,identificação direta,32.0,6.82,barra

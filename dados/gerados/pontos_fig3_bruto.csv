@@ -1,0 +1,126 @@
+numero,x_fig3,y_fig3,lon_fig,lat_fig,fazenda,corpo_dagua,tabela
+1,557.38,627.38,-40.893746,-8.259672,Cachoeira,rio Canindé,1
+2,543.82,619.82,-41.018637,-8.189734,Boqueirão,rio Canindé,1
+3,509.2,606.0,-41.337277,-8.061682,Porções de São Miguel,rio Canindé,1
+4,495.0,596.8,-41.468011,-7.976722,Campo Grande,rio Canindé,1
+5,480.5,590.2,-41.601482,-7.915628,Campo Largo,rio Canindé,1
+6,469.36,578.09,-41.704054,-7.804055,Torre,rio Canindé,1
+7,447.3,555.7,-41.907258,-7.597696,Ilha,rio Canindé,1
+8,440.0,539.2,-41.974572,-7.445928,Graciosa,rio Canindé,1
+9,439.0,519.8,-41.983945,-7.26774,Várzea Branca,rio Canindé,1
+10,435.89,510.33,-42.012655,-7.180701,Passagem,rio Canindé,1
+11,424.67,489.89,-42.116091,-6.992579,Boa Vista,rio Canindé,1
+12,413.0,485.0,-42.223478,-6.947293,Aldeia,rio Canindé,1
+13,400.11,481.67,-42.342096,-6.916252,Porto Alegre,rio Canindé,1
+14,390.2,476.0,-42.433338,-6.863882,Tatu,rio Canindé,1
+15,385.5,467.5,-42.476657,-6.785668,Gameleira,rio Canindé,1
+16,373.9,457.2,-42.583479,-6.690693,Retiro,rio Canindé,1
+17,362.0,448.0,-42.693051,-6.605809,Barra,rio Canindé,1
+18,360.89,440.67,-42.70334,-6.538428,Craíbas,rio Canindé,1
+19,360.0,424.0,-42.711667,-6.385344,Sussuapara,rio Canindé,1
+20,346.8,415.5,-42.833194,-6.306845,Santa Rosa,rio Canindé,1
+21,568.64,617.09,-40.790312,-8.165518,Jenipapo,rio Itaim Mirim,2
+22,533.0,601.8,-41.118334,-8.023907,Tábua,rio Itaim Mirim,2
+23,486.25,541.33,-41.549013,-7.467064,Serra,rio Itaim Mirim,2
+24,474.91,518.64,-41.653561,-7.258253,Torta,rio Itaim Mirim,2
+25,448.5,504.0,-41.896678,-7.122961,Tranqueira,rio Itaim Mirim,2
+26,442.09,499.36,-41.955689,-7.08017,Canavieira,rio Itaim Mirim,2
+27,431.33,498.89,-42.054672,-7.075451,Saco,rio Itaim Mirim,2
+28,529.64,457.09,-41.150572,-6.694891,Buraco,riacho Guaribas,3
+29,514.91,457.36,-41.286073,-6.696904,Pedra,riacho Guaribas,3
+30,500.83,462.0,-41.415541,-6.739011,Sussuapara,riacho Guaribas,3
+31,495.18,485.18,-41.467333,-6.951707,Sambambaia,riacho Guaribas,3
+32,486.82,496.82,-41.544182,-7.058288,Buqueirão,riacho Guaribas,3
+33,460.5,506.8,-41.786243,-7.149075,Tucano,riacho Guaribas,3
+34,455.18,473.82,-41.835469,-6.846016,Frade,riacho do Frade,4
+35,423.5,465.5,-42.127043,-6.76857,Talhada,riacho Serra Talhada,5
+36,399.58,456.25,-42.347179,-6.682826,Corrente,riacho Corrente,6
+37,377.82,461.82,-42.547387,-6.733233,Mocambo,riacho Mocambo,7
+38,435.5,573.0,-42.015674,-7.756173,Saco,riacho da Tranqueira,8
+39,427.82,562.18,-42.08645,-7.65657,Lagoa Grande,riacho da Tranqueira,8
+40,426.18,545.18,-42.101658,-7.5004,Tranqueira,riacho da Tranqueira,8
+41,393.82,517.82,-42.399675,-7.248031,Sussuapara,riacho da Tranqueira,8
+42,374.25,473.58,-42.580113,-6.841157,Salinas,riacho da Tranqueira,8
+43,544.5,275.5,-41.015432,-5.027788,Onça,rio Itaim Açu,9
+44,510.0,264.0,-41.332964,-4.921029,Anta,rio Itaim Açu,9
+45,471.38,277.62,-41.688137,-5.044773,Boqueirão,rio Itaim Açu,9
+46,429.82,318.82,-42.070217,-5.421762,Juazeiro,rio Itaim Açu,9
+47,413.62,328.62,-42.219209,-5.511191,Sambaíba,rio Itaim Açu,9
+48,401.64,342.09,-42.329307,-5.63454,Poti,rio Itaim Açu,9
+49,385.09,330.36,-42.481644,-5.526293,São Lázaro,rio Itaim Açu,9
+50,367.67,307.75,-42.642163,-5.318044,São Pedro,rio Itaim Açu,9
+51,352.2,286.0,-42.784664,-5.117791,São Cosme,rio Itaim Açu,9
+52,520.2,309.5,-41.23871,-5.339208,Dor de Barriga,riacho do Cais,10
+53,457.5,317.2,-41.815535,-5.407826,Bigode,riacho do Cais,10
+54,528.91,331.36,-41.158384,-5.540279,Cabeça do Tapuyo,riacho Cabeça do Tapuio,11
+55,501.8,322.0,-41.407894,-5.453385,Olho d'Água,riacho Cabeça do Tapuio,11
+56,483.8,322.0,-41.57351,-5.452784,Sítio da Cruz,riacho Cabeça do Tapuio,11
+57,468.62,345.38,-41.713013,-5.667024,Canabrava,riacho Canabrava,12
+58,435.0,326.2,-42.022474,-5.489724,Iningas,riacho Canabrava,12
+59,545.82,375.18,-41.002415,-5.943238,Sítio dos Mendes,riacho São Nicolau,13
+60,496.2,359.0,-41.459089,-5.792979,São Nicolau,riacho São Nicolau,13
+61,452.0,357.0,-41.865785,-5.773136,Sítio das Pedras,riacho São Nicolau,13
+62,423.5,355.0,-42.128027,-5.753818,Santo Antônio,riacho São Nicolau,13
+63,497.38,386.38,-41.447946,-6.044499,Vitória,riacho Vitória,14
+64,465.18,395.18,-41.744161,-6.124211,Serra Negra,riacho Negro,15
+65,515.67,407.25,-41.279549,-6.236722,São Vitor,riacho São Vítor,16
+66,477.67,416.75,-41.629097,-6.322694,São Mateus,riacho São Vítor,16
+67,417.0,384.0,-42.187575,-6.019916,Belo Jardim de Santa Cruz,riacho São Vítor,16
+68,414.0,346.0,-42.215516,-5.670851,Tapera,riacho São Vítor,16
+69,485.8,441.0,-41.554047,-6.54566,São Francisco Xavier,riacho Santa Catarina,17
+70,462.8,429.0,-41.765774,-6.434693,Sítio da Catarina,riacho Santa Catarina,17
+71,449.0,446.5,-41.89259,-6.594939,Gado Bravo,riacho São Vicente,18
+72,445.62,437.38,-41.923813,-6.511117,Santo Antônio,riacho São Vicente,18
+73,441.89,426.33,-41.958198,-6.409506,São Vicente,riacho São Vicente,18
+74,427.5,416.5,-42.090676,-6.318723,Alegrete,riacho São Vicente,18
+75,398.36,441.55,-42.358532,-6.547749,Craíbas,riacho das Berlengas,19
+76,381.2,397.0,-42.516849,-6.138103,Berlengas,riacho das Berlengas,19
+77,388.82,355.82,-42.447123,-5.760174,São João das Flores,riacho das Berlengas,19
+78,366.73,326.18,-42.650642,-5.487277,Santo Antônio,riacho Santo Antônio,20
+79,407.8,288.0,-42.273078,-5.138014,Ginipapo,riacho Maratauam,21
+80,414.36,249.55,-42.21303,-4.785095,Carnahiba,riacho Maratauam,21
+81,415.5,220.5,-42.202833,-4.5184,Estreito,riacho Maratauam,21
+82,410.0,192.0,-42.253692,-4.256493,Boa Ceia,riacho Maratauam,21
+83,471.64,250.09,-41.686066,-4.792016,Sítio da Cobra,riacho das Cobras,22
+84,422.33,256.11,-42.139643,-4.845655,Barra,riacho das Cobras,22
+85,369.0,288.0,-42.630071,-5.136719,Serra,riacho Bitorocara,23
+86,384.5,265.2,-42.487661,-4.927858,Bitorocara,riacho Bitorocara,23
+87,403.0,258.0,-42.317509,-4.862356,Jatobá,riacho Bitorocara,23
+88,540.0,639.0,-41.053596,-8.365759,Fazenda de Éguas,riachinho do Buriti,24
+89,298.82,718.18,-43.271971,-9.084853,Almas Santas,rio Piauí,25
+90,385.18,683.18,-42.477663,-8.766323,Tabuleiro Alto,rio Piauí,25
+91,342.0,735.8,-42.874504,-9.248088,Curral do Campo,rio Piauí,25
+92,456.36,662.91,-41.82291,-8.58253,Fazenda Grande,rio Piauí,25
+93,405.82,654.18,-42.288049,-8.500697,Sítio das Pimentas,rio Piauí,25
+94,403.2,639.0,-42.312274,-8.36119,Espinhos,rio Piauí,25
+95,392.91,629.64,-42.407043,-8.274858,Salinas,rio Piauí,25
+96,388.38,615.38,-42.448799,-8.143829,Cachoeira,rio Piauí,25
+97,376.12,607.88,-42.561665,-8.074457,Gameleira,rio Piauí,25
+98,368.89,598.33,-42.628328,-7.986592,Serra,rio Piauí,25
+99,362.38,582.75,-42.6884,-7.843268,Riacho,rio Piauí,25
+100,364.57,567.29,-42.668329,-7.701328,Sobrado,rio Piauí,25
+101,372.0,550.0,-42.600134,-7.542837,Lagoa do Jacaré,rio Piauí,25
+102,365.38,515.62,-42.661307,-7.226853,Espinheiros,rio Piauí,25
+103,367.5,496.0,-42.642019,-7.04679,Lagoa das Itariz,rio Piauí,25
+104,356.0,485.5,-42.747922,-6.949982,Sítio de Baixo,rio Piauí,25
+105,356.09,479.36,-42.747141,-6.893633,Sussuapra,rio Piauí,25
+106,354.38,472.62,-42.7629,-6.831605,Algodões,rio Piauí,25
+107,354.18,466.18,-42.764823,-6.772517,Catarenz,rio Piauí,25
+108,353.54,454.15,-42.77085,-6.662039,Tapera,rio Piauí,25
+109,323.89,573.67,-43.042587,-7.758568,Angicos,riacho Moicatá,26
+110,342.2,543.5,-42.874377,-7.482151,Moicatá,riacho Moicatá,26
+111,355.0,504.5,-42.756954,-7.12443,Lagoa da Jacaré,riacho Moicatá,26
+112,340.0,538.0,-42.894668,-7.431569,Maravilha,riacho Itaueira,27
+113,340.09,521.64,-42.893978,-7.2813,Batalha,riacho Itaueira,27
+114,333.92,500.33,-42.950976,-7.085463,Jacaré,riacho Itaueira,27
+115,325.55,495.36,-43.028042,-7.039545,Sítio das Flores,riacho Itaueira,27
+116,296.0,586.2,-43.299077,-7.872734,Guaribas,riacho Guaribas (2º),28
+117,319.7,541.9,-43.081411,-7.466706,Pico,riacho Guaribas (2º),28
+118,333.82,460.18,-42.95224,-6.716737,Mato,riacho Guaribas (2º),28
+119,214.0,649.5,-44.052983,-8.451297,Serra Vermelha,rio Gurgueia,29
+120,241.62,626.38,-43.799104,-8.239944,Estreito,rio Gurgueia,29
+121,235.09,600.64,-43.859364,-8.003273,Buritis,rio Gurgueia,29
+122,245.38,555.62,-43.765054,-7.590177,Barreira,rio Gurgueia,29
+123,255.0,533.5,-43.676781,-7.387406,Castelo,rio Gurgueia,29
+124,260.36,505.45,-43.627681,-7.130036,Sítio das Mangabeiras,rio Gurgueia,29
+125,273.8,475.5,-43.504322,-6.855404,Sítio Real,rio Gurgueia,29
