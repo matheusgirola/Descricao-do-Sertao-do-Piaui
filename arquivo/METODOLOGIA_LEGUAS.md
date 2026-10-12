@@ -28,8 +28,9 @@ ao longo de um caminho que acompanha o rio) numa posição sobre uma linha carto
 de modo que **o relato decida o espaçamento entre as fazendas** e a figura decida apenas
 **onde a cadeia começa e para que lado corre**. Esta nota descreve as decisões teóricas e
 formais desse procedimento, implementado em `work/leguas.py` e `work/snap_rios.py`; não
-descreve o software em si, nem o georreferenciamento da Figura 3 (que precede esta etapa e
-tem erro mediano de 1,4 km contra a drenagem da BCIM), nem a montagem do mapa interativo.
+descreve o software em si, nem o georreferenciamento da Figura 3 (que precede esta etapa: os
+grandes rios do relato na BC250 ficam a 5,7 km, em mediana, das linhas da figura, contra 13,9 km
+para pontos sorteados ao acaso no estado), nem a montagem do mapa interativo.
 
 ## 2 FUNDAMENTAÇÃO TEÓRICA
 
@@ -184,7 +185,7 @@ sinuosidade de cada um.
 
 O valor de ε foi escolhido por estar muito abaixo das duas incertezas que governam o problema:
 o passo mínimo do relato (uma légua, ~6 km) e o erro do georreferenciamento da Figura 3
-(~1,4 km). Uma tolerância menor reintroduz o efeito de Mandelbrot (seção 2.2) e infla a escala
+(~5 km). Uma tolerância menor reintroduz o efeito de Mandelbrot (seção 2.2) e infla a escala
 de cada rio na medida da sua sinuosidade; uma tolerância muito maior começa a cortar curvas que
 o caminho de 1697 de fato percorria.
 
@@ -459,7 +460,10 @@ hipótese, e o erro se acumula para o meio da cadeia.
 
 **Dependência residual da Figura 3.** A figura ainda decide a âncora em seis grupos, o sentido
 da cadeia em todos e a própria seleção do tronco (raio *R*g). Nos grupos em que a âncora vem da
-figura, um erro de posição dela se transfere integralmente à cadeia.
+figura, um erro de posição dela se transfere integralmente à cadeia. O próprio
+georreferenciamento tem um viés: deslizando a figura em grade, a distância mediana dos rios da
+BC250 às linhas da figura cai de 5,7 para 3,2 km com um deslocamento de ~5 km para leste —
+menos que o RMS do ajuste do contorno (5,0 km), mas sistemático.
 
 **Grupos pequenos.** Com duas ou três fazendas, o ajuste (8) tem um ou dois graus de liberdade, e
 a escala adotada é, em boa medida, a da banda. A Tabela 1 mostra que três grupos ficam no teto e

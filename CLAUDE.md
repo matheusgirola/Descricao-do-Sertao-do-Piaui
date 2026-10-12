@@ -20,15 +20,14 @@ propósito? Atualize `tests/test_dados.py`. Saídas em `dados/gerados/` (`g/`); 
 | — | `baixa_bc250.py`, `baixa_gazetteer.py` — WFS do IBGE (só com BC250 nova) | `g/*_bc250.parquet` |
 | 3 | `snap_rios.py` — encaixa os pontos na hidrografia | `g/fazendas_1697_bcim.csv` (copiar à mão para a raiz), `g/escala_global.json` |
 | 4 | `monta_mapa.py` (usa `base_svg.py`) — monta o HTML, determinístico byte a byte | `descricao_interativa_bcim.html` |
-| 5 | `qc_mapa.py` — vistas de conferência | `qc/` |
+| 5 | `qc_mapa.py` — vistas; `folha_conferencia.py` — folha para conferir Fig. 3, léguas e tabelas | `qc/` |
 | 6 | `afere_ancoras.py` — confere a escala contra 3 distâncias externas | stdout |
 
 ## Método
 
 **1. Leitura da Figura 3.** O JPEG embutido no PDF vai **sem recodificar** para `figura3.jpg` e o
 Pillow decodifica (pixels idênticos do 9.5 ao 12.3). Não usar `pypdf.images`: ele regrava o JPEG e
-a segmentação muda (123 pontos com pypdf 6.20, 80 com 5.1). Até 2026-10-12 a referência era o fluxo
-regravado pela libjpeg 9e do Anaconda (ver item 5). Raster 609×916 px; 125 pontos laranja por
+a segmentação muda (123 pontos com pypdf 6.20, 80 com 5.1). Raster 609×916 px; 125 pontos laranja por
 segmentação de cor (componentes ≥5 px; o menor tem 7). Rótulos de ~6 px lidos à vista em recortes
 8×; `NUMERO` guarda a posição (x, y) de cada número e cada blob recebe o do vizinho mais próximo
 (`assert` de unicidade e < 3 px). Os pontos **16** e **37** ficam a 6 px um do outro: 16 = o de
@@ -37,8 +36,9 @@ noroeste, pela cadeia do Canindé; efeito nulo, pois cada um vai para o seu riac
 **2. Georreferenciamento.** Plot equirretangular puro: silhueta do Piauí (fechamento 7×7 — com
 5×5 os rios deixam o contorno aberto e o ICP desanda) ajustada por ICP + afim contra a BCIM.
 Escala 0,00920 °/px em x e 0,00918 em y, rotação −0,21°, RMS do contorno 5,0 km; grau 2 não
-melhora. Aferição independente: os rios desenhados na figura caem a **1,4 km** (mediana) da
-drenagem da BCIM.
+melhora. Aferição (`folha_conferencia.py`): os rios do relato na BC250 ficam a **5,7 km** (mediana)
+das linhas da figura, contra 13,9 km ao acaso; o ótimo pede a figura ~5 km a leste. Os antigos
+"1,4 km da drenagem da BCIM" não valem: pontos ao acaso dão o mesmo (a drenagem 1:1M é densa).
 
 **3. Léguas (`leguas.py`).** "Dista da que se segue N léguas": **94 passos** legíveis (1 a 20
 léguas). O parser acha as 29 seções pelo algarismo romano e valida 1..n em cada seção e 1–125 no

@@ -1,27 +1,29 @@
 # Hooks locais: usam as versões travadas no uv.lock, sem baixar nada à parte.
 # Instalar (exige repositório git): uvx prek install
+# O `sh -c` acrescenta ao PATH os diretórios-padrão do uv: o git disparado por
+# aplicativos gráficos (botão de commit) não lê o ~/.zshrc e não acharia o uv.
 repos:
   - repo: local
     hooks:
       - id: ruff-check
         name: ruff check
-        entry: uv run ruff check --fix
+        entry: sh -c 'PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"; exec uv run ruff check --fix "$@"' --
         language: system
         types: [python]
       - id: ruff-format
         name: ruff format
-        entry: uv run ruff format
+        entry: sh -c 'PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"; exec uv run ruff format "$@"' --
         language: system
         types: [python]
       - id: pyrefly
         name: pyrefly check
-        entry: uv run pyrefly check
+        entry: sh -c 'PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"; exec uv run pyrefly check "$@"' --
         language: system
         types: [python]
         pass_filenames: false
       - id: pytest
         name: pytest
-        entry: uv run pytest -q
+        entry: sh -c 'PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"; exec uv run pytest -q "$@"' --
         language: system
         types: [python]
         pass_filenames: false

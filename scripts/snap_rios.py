@@ -62,7 +62,7 @@ B_LO, B_HI = 4.0, 18.0  # faixa plausivel ao estimar a escala global
 # mais longo. Generalizado a ~445 m a regua volta a coincidir com a da BCIM
 # (razao 1,00 a 1,07) e o ganho de cobertura, que e o que interessa, permanece.
 # 445 m e muito menos que o passo do relato (uma legua, ~6 km) e que o erro da
-# Figura 3 (~1,4 km); o ponto ainda assim e assentado no tracado real no fim.
+# Figura 3 (~5 km); o ponto ainda assim e assentado no tracado real no fim.
 TOL_TRONCO = 0.004  # graus (~445 m)
 BANDA = (0.6, 1.8)  # quanto um grupo pode fugir da escala global
 # no encaixe generico evita-se pendurar a fazenda num rio grande de outra bacia:
