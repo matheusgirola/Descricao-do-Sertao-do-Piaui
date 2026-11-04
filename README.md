@@ -4,6 +4,8 @@ Mapa interativo das 125 fazendas visitadas por Miguel de Carvalho em 1697 (*Desc
 do Piauí*), reconstituídas sobre a base cartográfica atual do IBGE a partir das léguas do relato e
 da Figura 3 de *Os Jesuítas no Piauí* (Baptista, 1986).
 
+**Mapa online:** <https://matheusgirola.github.io/Descricao-geral-do-Piaui/>
+
 - [`descricao_interativa_bcim.html`](descricao_interativa_bcim.html): o mapa, autocontido (basta
   abrir no navegador).
 - [`fazendas_1697_bcim.csv`](fazendas_1697_bcim.csv): as 125 fazendas com coordenadas, método
@@ -47,3 +49,12 @@ ser baixados à parte:
 
 Sem a BCIM não rodam `monta_mapa.py` nem `afere_ancoras.py`; sem o recorte, não roda
 `extrai_figura3.py` (as saídas dele já estão em `dados/gerados/`).
+
+## Publicar
+
+O site no GitHub Pages é montado por [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
+a cada push na `main`: roda ruff e pytest, copia o HTML commitado para `index.html` (com o CSV ao
+lado) e publica. O HTML não é regenerado no CI, porque `monta_mapa.py` precisa da BCIM; para
+mudar o site, rode o pipeline localmente e faça commit de `descricao_interativa_bcim.html`.
+
+Uma vez só, no GitHub: *Settings → Pages → Build and deployment → Source: **GitHub Actions***.

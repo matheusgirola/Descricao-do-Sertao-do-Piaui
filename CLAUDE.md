@@ -182,7 +182,7 @@ ref_numero, ref_legua, na_cabeceira, na_barra`. Pré-visualizar: `.claude/launch
   (tab. 25) são deliberados. `TOL_TRONCO`, `B_LO`/`B_HI` e `BANDA` mexem em todo o mapa.
 - `monta_mapa.py`: `RIOS_RELATO` (BC250, traço grosso e rótulo) e `RIOS_RELATO_BCIM` (suprime o
   traço fino) andam juntas. Texto de `dados/fontes/descricao_interativa_1.html` ou `TROCAS`; seções sem
-  fazendas em `CAM`. **Não edite o HTML publicado à mão.**
+  fazendas em `CAM`. **Não edite o HTML publicado à mão.** Push na `main` o publica (Pages, `pages.yml`).
 - Depois de rodar, olhar `qc/` (vistas quadradas, por tabela): vazado = figura, cheio = final;
   vermelho = léguas, laranja = rio nomeado, azul = afluente, roxo = drenagem próxima.
 

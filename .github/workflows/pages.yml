@@ -1,0 +1,66 @@
+# Publica o mapa no GitHub Pages.
+#
+# O HTML não é regenerado aqui: monta_mapa.py precisa da BCIM (355 MB, fora do git).
+# O site publica o que está commitado — rode o pipeline localmente, faça commit de
+# descricao_interativa_bcim.html e o push dispara o deploy.
+#
+# Site: https://matheusgirola.github.io/Descricao-geral-do-Piaui/
+#   index.html                  ← descricao_interativa_bcim.html
+#   fazendas_1697_bcim.csv      ← o mesmo arquivo da raiz
+
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  checa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v10.1.0
+      - run: uv sync --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest -q
+
+  monta:
+    needs: checa
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Monta _site
+        run: |
+          mkdir -p _site
+          cp descricao_interativa_bcim.html _site/index.html
+          cp fazendas_1697_bcim.csv _site/
+          # O HTML tem de ser autocontido: nenhum recurso externo além do namespace SVG.
+          if grep -oE '(src|href)="https?://' _site/index.html; then
+            echo "::error::index.html carrega recurso externo"; exit 1
+          fi
+          ls -la _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  publica:
+    needs: monta
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
