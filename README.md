@@ -4,7 +4,7 @@ Mapa interativo das 125 fazendas visitadas por Miguel de Carvalho em 1697 (*Desc
 do Piauí*), reconstituídas sobre a base cartográfica atual do IBGE a partir das léguas do relato e
 da Figura 3 de *Os Jesuítas no Piauí* (Baptista, 1986).
 
-**Mapa online:** <https://matheusgirola.github.io/Descricao-geral-do-Piaui/>
+**Mapa online:** <https://matheusgirola.github.io/Descricao-do-Sertao-do-Piaui/>
 
 - [`descricao_interativa_bcim.html`](descricao_interativa_bcim.html): o mapa, autocontido (basta
   abrir no navegador).

@@ -4,7 +4,7 @@
 # O site publica o que está commitado — rode o pipeline localmente, faça commit de
 # descricao_interativa_bcim.html e o push dispara o deploy.
 #
-# Site: https://matheusgirola.github.io/Descricao-geral-do-Piaui/
+# Site: https://matheusgirola.github.io/Descricao-do-Sertao-do-Piaui/
 #   index.html                  ← descricao_interativa_bcim.html
 #   fazendas_1697_bcim.csv      ← o mesmo arquivo da raiz
 
