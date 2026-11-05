@@ -19,6 +19,82 @@ import base_svg as B
 SRC_HTML = "dados/fontes/descricao_interativa_1.html"
 OUT = "descricao_interativa_bcim.html"
 LEGUA_KM = 6.2  # legua de sesmaria em linha reta (a mesma da escala do cartucho)
+# layout empilhado (texto por cima do mapa): tela estreita E em pe.  Vale no CSS
+# e no JS (estreito()); deitado, ate o celular pequeno tem o painel ao lado.
+ESTREITO = "(max-width:820px) and (orientation:portrait)"
+# o aviso "gire o celular" cobre a pagina so no celular em pe
+CELULAR_EM_PE = "(orientation:portrait) and (max-width:600px) and (pointer:coarse)"
+
+# celular: painel ao lado do mapa quando deitado e aviso de "gire o aparelho" em pe.
+# Nenhum site gira a tela do iPhone; no Android da, depois de um toque, com tela
+# cheia + screen.orientation.lock -- e o que faz o botao do aviso.
+CSS_MOVEL = """
+  /* a largura do painel e a mesma que o JS supoe: pw=Math.min(430,w*0.5) */
+  @media (orientation:landscape), (min-width:821px){:root{--panelW:min(430px,50vw)}}
+  /* celular deitado: pouca altura, tudo mais justo */
+  @media (orientation:landscape) and (max-height:500px){
+    #panel{padding:0 14px 0 30px}
+    body.panel-left #panel{padding:0 30px 0 14px}
+    #topo{padding:6px 14px 6px 30px;margin:0 -14px 0 -30px}
+    body.panel-left #topo{padding:6px 30px 6px 14px;margin:0 -30px 0 -14px}
+    section{padding:7vh 0 5vh}
+    section p{font-size:.95rem;line-height:1.55}
+    .faz{font-size:.92rem}
+    .titulo{font-size:1.5rem}
+    #zoomctl{top:10px}
+    #legenda{font-size:10px;max-width:220px;padding:4px 8px;bottom:8px}
+  }
+  #gire{display:none}
+  @media CELULAR_EM_PE{
+    #gire{display:flex;position:fixed;inset:0;z-index:50;flex-direction:column;
+      align-items:center;justify-content:center;gap:14px;padding:32px 28px;
+      text-align:center;background:#f3e7cf;color:var(--ink);font-family:Georgia,serif}
+    body{overflow:hidden}
+  }
+  #gire .aparelho{width:44px;height:74px;border:3px solid var(--accent);border-radius:9px;
+    position:relative;animation:gira 2.6s ease-in-out infinite}
+  #gire .aparelho::after{content:'';position:absolute;bottom:5px;left:50%;width:10px;
+    height:3px;margin-left:-5px;border-radius:2px;background:var(--accent)}
+  @keyframes gira{0%,20%{transform:rotate(0)}50%,80%{transform:rotate(-90deg)}
+    100%{transform:rotate(0)}}
+  #gire h1{font-size:1.4rem;font-weight:normal;font-variant:small-caps;letter-spacing:.06em;
+    color:var(--accent);margin:8px 0 0}
+  #gire p{margin:0;max-width:300px;line-height:1.5;font-size:1rem}
+  #gire small{font-size:.8rem;color:#5c4a33;max-width:280px;line-height:1.4}
+  #girarBtn{display:none;font:600 .95rem/1 'Helvetica Neue',Arial,sans-serif;color:#f3e7cf;
+    background:var(--accent);border:0;border-radius:8px;padding:12px 18px;cursor:pointer}
+  #gire.pode #girarBtn{display:block}
+  @media (prefers-reduced-motion:reduce){
+    #gire .aparelho{animation:none;transform:rotate(-90deg)}}
+"""
+
+GIRE_HTML = """<div id="gire" role="dialog" aria-modal="true" aria-labelledby="gireT">
+  <div class="aparelho" aria-hidden="true"></div>
+  <h1 id="gireT">Gire o celular</h1>
+  <p>O relato corre ao lado do mapa; com o aparelho em pé, um cobre o outro.</p>
+  <button id="girarBtn" type="button">Abrir na horizontal</button>
+  <small>Se a tela não girar, desligue a trava de rotação do aparelho.</small>
+</div>"""
+
+GIRE_JS = """<script>
+(function(){
+  /* tela cheia e depois trava deitada: so o Chrome do Android deixa.  Onde nao
+     der, o botao some e fica o pedido para girar o aparelho a mao. */
+  const g=document.getElementById('gire'), b=document.getElementById('girarBtn');
+  const de=document.documentElement;
+  if(de.requestFullscreen && screen.orientation && screen.orientation.lock)
+    g.classList.add('pode');
+  b.addEventListener('click', async ()=>{
+    try{
+      await de.requestFullscreen({navigationUI:'hide'});
+      await screen.orientation.lock('landscape');
+    }catch(_){
+      g.classList.remove('pode');
+      if(document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+    }
+  });
+})();
+</script>"""
 
 # rios que o relato de 1697 percorre -> nome na BC250 (mesma tabela de snap_rios.py).
 # Sao desenhados a partir da BC250, e nao da BCIM que faz o resto da carta: e nela
@@ -965,6 +1041,10 @@ def main():
 
     src = pathlib.Path(SRC_HTML).read_text(encoding="utf-8")
     css = src[src.find("<style>") + 7 : src.find("</style>")]
+    # empilhado (texto por cima do mapa) so em pe: o celular deitado, mesmo com
+    # menos de 820 px, ganha o painel ao lado do mapa.  Mesmo criterio de estreito().
+    assert css.count("@media (max-width:820px){") == 1
+    css = css.replace("@media (max-width:820px){", f"@media {ESTREITO}{{")
     main_html = src[src.find("<main") : src.rfind("</main>") + 7]
     secs = re.findall(r"<section([^>]*)>(.*?)</section>", main_html, re.DOTALL)
 
@@ -1061,6 +1141,8 @@ def main():
         "o.textContent=(h?[...h.childNodes].filter(c=>c.nodeName!=='SUP')"
         ".map(c=>c.textContent).join(''):",
     )
+    assert js_core.count("if(w<=820) return {cx:") == 1
+    js_core = js_core.replace("if(w<=820) return {cx:", "if(estreito()) return {cx:")
     js_core = js_core.replace(
         "function fitZoom(){return Math.max(innerWidth/MAPW, innerHeight/MAPH);}",
         "function fitZoom(){const b=folha();return Math.min(b.fw/MAPW, b.fh/MAPH);}",
@@ -1148,7 +1230,7 @@ def main():
   #zoomctl{position:fixed;top:52px;left:auto;right:calc(var(--panelW) + 12px);z-index:10;
     display:flex;flex-direction:column;gap:4px}
   body.panel-left #zoomctl{right:auto;left:calc(var(--panelW) + 12px)}
-  @media (max-width:820px){#zoomctl,body.panel-left #zoomctl{left:auto;right:12px}}
+  @media %s{#zoomctl,body.panel-left #zoomctl{left:auto;right:12px}}
   #zoomctl button{width:30px;height:28px;padding:0;cursor:pointer;color:#3a2a18;
     background:rgba(243,231,207,.95);border:1px solid rgba(43,32,19,.4);border-radius:4px;
     font:15px/1 'Helvetica Neue',Arial,sans-serif}
@@ -1162,7 +1244,8 @@ def main():
   .km{font-size:.85em;color:#8a6a45;white-space:nowrap}
   .pt em s{display:block;text-decoration:none;font-style:normal;font-size:9.5px;
     font-family:'Helvetica Neue',Arial,sans-serif;color:#6b5a3e;margin-top:2px}
-""" % (B.W, B.H)  # noqa: UP031 -- CSS cheio de chaves
+""" % (B.W, B.H, ESTREITO)  # noqa: UP031 -- CSS cheio de chaves
+    css_extra += CSS_MOVEL.replace("CELULAR_EM_PE", CELULAR_EM_PE)
 
     out = f"""<!DOCTYPE html>
 <html lang="pt-BR">
@@ -1173,6 +1256,7 @@ def main():
 <style>{css}{css_extra}</style>
 </head>
 <body>
+{GIRE_HTML}
 <div id="viewport">
   <div id="mapwrap">
     {svg}
@@ -1217,18 +1301,20 @@ posição da Figura 3<br>
      primeiras secoes de irem parar debaixo do texto.  As funcoes sao declaradas
      com `function` de proposito: goTo() ja roda antes daqui e depende do hoisting. */
   var camX=0, camY=0, camZ=1;
+  /* empilhado (texto por cima do mapa): o mesmo criterio do CSS */
+  function estreito(){{ return matchMedia('{ESTREITO}').matches; }}
   /* a folha inteira -- carta, moldura e cartucho -- cabendo na faixa livre.
      Aperta mais que o freeBox() das secoes de fazenda, que precisa guardar
      folga para os rotulos dos pontos; aqui nao ha rotulo nenhum a proteger. */
   function folha(){{
     const w=innerWidth, h=innerHeight;
-    if(w<=820) return {{fw:w*0.96, fh:h*0.62}};
+    if(estreito()) return {{fw:w*0.96, fh:h*0.62}};
     const pw=Math.min(430,w*0.5);
     return {{fw:(w-pw)*0.97, fh:h*0.97}};
   }}
   function faixa(){{
     const w=innerWidth;
-    if(w<=820) return [0,w];
+    if(estreito()) return [0,w];
     const pw=Math.min(430,w*0.5);
     return panelSide()==='right' ? [0,w-pw] : [pw,w];
   }}
@@ -1308,6 +1394,7 @@ posição da Figura 3<br>
 
 }})();
 </script>
+{GIRE_JS}
 </body>
 </html>"""
     pathlib.Path(OUT).write_text(out, encoding="utf-8")

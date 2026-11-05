@@ -158,6 +158,11 @@ no quadro; vegetação definida uma vez e usada com `<use>`. `moldura()` e `cart
 rosa, legenda só do que se desenha, escala km/léguas). `rotulos_rio()`: corpo pelo comprimento do
 curso, rótulo reto se não cabe, posição contra colisões e curvatura, trilho suavizado, auréola.
 Marcador laranja = no rio que o relato nomeia; roxo = sem homônimo (posição da figura).
+**Celular:** empilhado (texto sobre o mapa) só com `ESTREITO` (≤ 820 px **e** retrato), o mesmo
+critério no CSS e no JS (`estreito()`); deitado, até o celular pequeno tem o painel ao lado
+(`--panelW: min(430px, 50vw)`, igual ao `pw` do JS). Em pé, `#gire` cobre a página
+(`CELULAR_EM_PE`): o iPhone não deixa site girar a tela; no Android o botão abre tela cheia e
+trava deitado (`screen.orientation.lock`).
 
 ## Fontes e arquivos
 
