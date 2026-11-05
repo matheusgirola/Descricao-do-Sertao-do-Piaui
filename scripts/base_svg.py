@@ -30,14 +30,31 @@ def xy(lon, lat):
     return ((np.asarray(lon) - LON0) * COS * K + PAD, (LAT0 - np.asarray(lat)) * K)
 
 
-def d(geom, tol=0.0, close=False, prec=1):
-    """geometria -> atributo d de <path>"""
+def _partes(geom):
+    """achata Multi*/GeometryCollection (o que sai de uma intersecao) em partes simples"""
+    if hasattr(geom, "geoms"):
+        for g in geom.geoms:
+            yield from _partes(g)
+    else:
+        yield geom
+
+
+def d(geom, tol=0.0, close=False, prec=1, corte=None):
+    """geometria -> atributo d de <path>, em coordenadas relativas (l dx,dy).
+
+    corte: poligono que recorta a geometria ja simplificada.  Serve para nao gravar
+    no arquivo o que o clip-path esconderia; passe uma folga maior que a meia
+    espessura do traco, para o clip-path continuar sendo quem decide a borda."""
     if geom is None or geom.is_empty:
         return ""
     if tol:
         geom = geom.simplify(tol)
+    if corte is not None:
+        geom = geom.intersection(corte)
+        if geom.is_empty:
+            return ""
     out = []
-    for g in geom.geoms if hasattr(geom, "geoms") else [geom]:
+    for g in _partes(geom):
         rings = []
         if g.geom_type == "Polygon":
             rings = [g.exterior] + list(g.interiors)
@@ -50,15 +67,20 @@ def d(geom, tol=0.0, close=False, prec=1):
             if len(c) < 2:
                 continue
             X, Y = xy(c[:, 0], c[:, 1])
-            X = np.round(X, prec)
-            Y = np.round(Y, prec)
+            X = np.round(X, prec) + 0.0  # + 0.0: sem "-0"
+            Y = np.round(Y, prec) + 0.0
             keep = np.r_[True, (np.diff(X) != 0) | (np.diff(Y) != 0)]
             X, Y = X[keep], Y[keep]
             if len(X) < 2:
                 continue
+            # passos relativos, arredondados de novo: a diferenca de dois valores
+            # com `prec` casas tem `prec` casas, e a soma no navegador volta ao ponto
+            DX = np.round(np.diff(X), prec) + 0.0
+            DY = np.round(np.diff(Y), prec) + 0.0
+            passos = " ".join(f"{a:g},{b:g}" for a, b in zip(DX, DY))
             out.append(
-                "M"
-                + "L".join(f"{a:g},{b:g}" for a, b in zip(X, Y))
+                f"M{X[0]:g},{Y[0]:g}l"
+                + passos.replace(" -", "-").replace(",-", "-")
                 + ("Z" if close else "")
             )
     return "".join(out)
@@ -123,8 +145,6 @@ def carrega():
     uf = uf[uf.sigla != "PI"].copy()
     uf["geometry"] = uf.geometry.intersection(quadro).difference(pi)
     L["uf"] = uf[~uf.geometry.is_empty]
-    mun = gpd.read_file(GPKG, layer="lim_municipio_a", engine="pyogrio", bbox=bb)
-    L["mun"] = mun[mun.intersects(pi)]  # o desenho e recortado no PI de qualquer forma
 
     dr = gpd.read_parquet("dados/gerados/drenagem_bbox.parquet")
     dr = dr[dr.intersects(quadro)]
@@ -153,10 +173,6 @@ def carrega():
         ("hid_terreno_sujeito_inundacao_a", "brejo"),
         ("rel_elemento_fisiografico_natural_l", "serras"),
         ("rel_curva_nivel_l", "curvas"),
-        ("lim_unidade_protecao_integral_a", "uc_int"),
-        ("lim_unidade_uso_sustentavel_a", "uc_sus"),
-        ("eco_ext_mineral_p", "mineral"),
-        ("rel_pico_p", "picos"),
         ("loc_cidade_p", "cidades"),
         ("loc_capital_p", "capital"),
     ]:

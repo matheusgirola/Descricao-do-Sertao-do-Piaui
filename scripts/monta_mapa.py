@@ -731,6 +731,11 @@ def svg_base(L):
     P = []
     add = P.append
     d_pi = B.d(L["pi"], 0.002, close=True)
+    # o que fica fora do Piaui o clip-path esconde; recortar antes so tira do arquivo
+    # o que nao aparece (as curvas de nivel eram 670 kB, 85% fora do estado).  A
+    # folga (~12 px) passa da meia espessura dos tracos e das juntas: a borda
+    # desenhada continua sendo a do clip-path, igual a de antes
+    CORTE = L["pi"].buffer(0.03)
     add(
         f'<svg id="mapimg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {B.W} {B.H}" '
         f'width="{B.W}" height="{B.H}" shape-rendering="geometricPrecision">'
@@ -738,13 +743,6 @@ def svg_base(L):
 
     add("<defs>")
     add(f'<clipPath id="cpPI"><path d="{d_pi}"/></clipPath>')
-    add(
-        '<filter id="grao" x="0" y="0" width="100%" height="100%">'
-        '<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="n"/>'
-        '<feColorMatrix in="n" type="saturate" values="0"/>'
-        '<feComponentTransfer><feFuncA type="linear" slope="0.055"/></feComponentTransfer>'
-        "</filter>"
-    )
     # a vegetacao e desenhada duas vezes (dentro e fora do Piaui): definida uma vez
     add('<g id="veg-def">')
     for cls, (cor, _) in B.VEG_CORES.items():
@@ -819,12 +817,12 @@ def svg_base(L):
         sub = cv[cv.cota == cota]
         if not len(sub):
             continue
-        dd = "".join(B.d(g, 0.02, prec=0) for g in sub.geometry)
+        dd = "".join(B.d(g, 0.02, prec=0, corte=CORTE) for g in sub.geometry)
         if dd:
             add(
                 f'<path d="{dd}" fill="none" stroke="#8a7048" stroke-width="{larg}" opacity="{op}"/>'
             )
-    dd = "".join(B.d(g, 0.004) for g in L["serras"].geometry)
+    dd = "".join(B.d(g, 0.004, corte=CORTE) for g in L["serras"].geometry)
     add(
         f'<path d="{dd}" fill="none" stroke="#8c5a35" stroke-width="2.6" opacity=".55" stroke-linecap="round"/>'
     )
@@ -842,44 +840,18 @@ def svg_base(L):
         )
     add("</g>")
 
-    # ---- unidades de conservacao ------------------------------------------
-    add('<g id="g-uc" clip-path="url(#cpPI)">')
-    for key, cor in [("uc_int", "#3f6b45"), ("uc_sus", "#6d7f4a")]:
-        dd = "".join(B.d(g, 0.005, close=True) for g in L[key].geometry)
-        if dd:
-            add(
-                f'<path d="{dd}" fill="{cor}" fill-opacity=".10" stroke="{cor}" '
-                f'stroke-width="1.4" stroke-dasharray="7 4" opacity=".8"/>'
-            )
-    add("</g>")
-    add(
-        '<g id="g-uc-txt" font-family="Helvetica,Arial,sans-serif" font-size="15" '
-        'fill="#3f6b45" opacity=".9" text-anchor="middle">'
-    )
-    for key in ("uc_int", "uc_sus"):
-        for _, r in L[key].iterrows():
-            c = r.geometry.representative_point()
-            x, y = B.xy(c.x, c.y)
-            nm = re.sub(
-                r"^(Parque Nacional|Estação Ecológica|Área de Proteção Ambiental|Floresta Nacional|Reserva Extrativista(\s+Marinha)?)\s*(das|dos|da|de|do)?\s+",
-                "",
-                r.nome or "",
-            )
-            add(f'<text x="{x:.0f}" y="{y:.0f}">{esc(nm)}</text>')
-    add("</g>")
-
     # ---- agua --------------------------------------------------------------
     add('<g id="g-agua" clip-path="url(#cpPI)">')
     dr = L["dren"]
     prin = dr.nome.isin(RIOS_RELATO_BCIM)
-    dd = "".join(B.d(g, 0.006, prec=0) for g in dr[~prin].geometry)
+    dd = "".join(B.d(g, 0.006, prec=0, corte=CORTE) for g in dr[~prin].geometry)
     add(
         f'<path d="{dd}" fill="none" stroke="#7fa8c4" stroke-width="1.1" opacity=".75"/>'
     )
-    dd = "".join(B.d(g, 0.004, close=True) for g in L["lagos"].geometry)
+    dd = "".join(B.d(g, 0.004, close=True, corte=CORTE) for g in L["lagos"].geometry)
     if dd:
         add(f'<path d="{dd}" fill="#8fb8d4" stroke="#5f8fb0" stroke-width="0.8"/>')
-    dd = "".join(B.d(g, 0.006, close=True) for g in L["brejo"].geometry)
+    dd = "".join(B.d(g, 0.006, close=True, corte=CORTE) for g in L["brejo"].geometry)
     if dd:
         add(
             f'<path d="{dd}" fill="#9fbfa6" fill-opacity=".45" stroke="#7fa389" '
@@ -893,7 +865,7 @@ def svg_base(L):
         sub = L["dren250"][L["dren250"].nome == nome]
         if not len(sub):
             continue
-        dd = "".join(B.d(g, 0.003) for g in sub.geometry)
+        dd = "".join(B.d(g, 0.003, corte=CORTE) for g in sub.geometry)
         larg = 3.4 if nome in GROSSOS else 2.3
         add(
             f'<path d="{dd}" fill="none" stroke="#2d6f92" stroke-width="{larg}" '
@@ -918,22 +890,7 @@ def svg_base(L):
     add("</g>")
 
     # ---- limites -----------------------------------------------------------
-    add(
-        '<g id="g-mun" opacity=".22" clip-path="url(#cpPI)"><path d="'
-        + "".join(B.d(g, 0.012, close=True, prec=0) for g in L["mun"].geometry)
-        + '" fill="none" stroke="#6b5a3e" stroke-width="0.7"/></g>'
-    )
     add(f'<path d="{d_pi}" fill="none" stroke="#5a4326" stroke-width="2.6"/>')
-
-    # ---- extracao mineral / picos -----------------------------------------
-    add('<g id="g-mineral" fill="#8a5a2b" opacity=".8">')
-    for _, r in L["mineral"].iterrows():
-        x, y = B.xy(r.geometry.x, r.geometry.y)
-        add(f'<path d="M{x:.0f},{y - 5:.0f}l5,9h-10z"/>')
-    for _, r in L["picos"].iterrows():
-        x, y = B.xy(r.geometry.x, r.geometry.y)
-        add(f'<path d="M{x:.0f},{y - 8:.0f}l8,14h-16z" fill="#6b4a24"/>')
-    add("</g>")
 
     # ---- cidades -----------------------------------------------------------
     add(
@@ -951,10 +908,9 @@ def svg_base(L):
 
     add(cartucho())
     add(moldura())
-    add(
-        f'<rect width="{B.W}" height="{B.H}" filter="url(#grao)" opacity=".5" '
-        f'style="pointer-events:none"/>'
-    )
+    # sem o "grao" de papel (feTurbulence sobre a carta inteira): mudava cada pixel em
+    # menos de 1 nivel de 255 e custava mais da metade do tempo de desenho do mapa,
+    # refeito a cada zoom e a cada troca de secao
     add("</svg>")
     return "".join(P)
 
@@ -1045,6 +1001,31 @@ def main():
     # menos de 820 px, ganha o painel ao lado do mapa.  Mesmo criterio de estreito().
     assert css.count("@media (max-width:820px){") == 1
     css = css.replace("@media (max-width:820px){", f"@media {ESTREITO}{{")
+    # o pulso do marcador animava box-shadow: repintura a cada quadro, e o marcador
+    # mora dentro do #mapwrap, entao o SVG embaixo dele era redesenhado junto.  O
+    # anel agora e um ::after que so muda transform/opacity (fica no compositor)
+    for velho, novo in [
+        (
+            "    box-shadow:0 0 0 3px rgba(243,231,207,.6);pointer-events:none;\n",
+            "    pointer-events:none;\n",
+        ),
+        ("    animation:pulse 2s infinite}", "  }"),
+        (
+            (
+                "@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(138,75,42,.5)}"
+                "70%{box-shadow:0 0 0 18px rgba(138,75,42,0)}"
+                "100%{box-shadow:0 0 0 0 rgba(138,75,42,0)}}"
+            ),
+            (
+                "#marker::after{content:'';position:absolute;inset:-3px;border-radius:50%;\n"
+                "    border:3px solid rgba(138,75,42,.5);animation:pulse 2s infinite}\n"
+                "  @keyframes pulse{0%{transform:scale(1);opacity:1}"
+                "70%{transform:scale(2.2);opacity:0}100%{transform:scale(2.2);opacity:0}}"
+            ),
+        ),
+    ]:
+        assert css.count(velho) == 1, velho
+        css = css.replace(velho, novo)
     main_html = src[src.find("<main") : src.rfind("</main>") + 7]
     secs = re.findall(r"<section([^>]*)>(.*?)</section>", main_html, re.DOTALL)
 
@@ -1190,6 +1171,20 @@ def main():
         "                             : (rio ? 'sem homônimo na carta atual · '+rio : 'posição da Figura 3');\n"
         "      d.innerHTML='<i></i><b>'+n+'</b><em>'+n+' — '+nome+'<s>'+info+'</s></em>';",
     )
+    # no celular a barra de endereco aparece e some ao rolar, e cada vez dispara um
+    # resize so de altura: a camera refazia a transicao (e o redesenho do mapa) no
+    # meio da leitura.  So a largura -- que inclui girar o aparelho -- move a camera
+    assert js_core.count("  addEventListener('resize',()=>goTo(active));") == 1
+    js_core = js_core.replace(
+        "  addEventListener('resize',()=>goTo(active));",
+        "  let larg0=innerWidth, alt0=innerHeight;\n"
+        "  addEventListener('resize',()=>{\n"
+        "    const w=innerWidth, h=innerHeight;\n"
+        "    // altura: so se mudou muito (janela de desktop), nao a barra do navegador\n"
+        "    if(w===larg0 && Math.abs(h-alt0)<160) return;\n"
+        "    larg0=w; alt0=h; goTo(active);\n"
+        "  });",
+    )
     # o IntersectionObserver nao dispara em alguns contextos; rolagem tambem decide a secao
     js_core = js_core.replace(
         "  const idx=document.getElementById('indice');",
@@ -1224,8 +1219,6 @@ def main():
     font-family:'Helvetica Neue',Arial,sans-serif}
   #topo select{flex:1;min-width:0}
   #topo button:hover,#topo select:hover{background:#fff}
-  /* sem o painel de camadas, as camadas que nasciam desligadas ficam desligadas */
-  #g-uc,#g-uc-txt,#g-mineral,#g-mun{display:none}
   svg text{pointer-events:none;user-select:none}
   #zoomctl{position:fixed;top:52px;left:auto;right:calc(var(--panelW) + 12px);z-index:10;
     display:flex;flex-direction:column;gap:4px}
@@ -1257,6 +1250,17 @@ def main():
 </head>
 <body>
 {GIRE_HTML}
+<!-- o texto vem antes do mapa: aparece sem esperar o SVG -->
+<div id="panel">
+<header id="topo">
+  <select id="indice" title="ir para um trecho"></select>
+  <button id="sideBtn" type="button" title="trocar o painel de lado">⇄</button>
+</header>
+<main>
+{corpo}
+</main>
+</div>
+
 <div id="viewport">
   <div id="mapwrap">
     {svg}
@@ -1281,15 +1285,6 @@ nomeia, espaçada pelas léguas do texto<br>
 posição da Figura 3<br>
 <span style="opacity:.75">Passe o cursor sobre o ponto ou sobre o parágrafo.</span></div>
 
-<div id="panel">
-<header id="topo">
-  <select id="indice" title="ir para um trecho"></select>
-  <button id="sideBtn" type="button" title="trocar o painel de lado">⇄</button>
-</header>
-<main>
-{corpo}
-</main>
-</div>
 
 <script id="fazendas-json" type="application/json">{json.dumps(grps, ensure_ascii=False)}</script>
 <script>

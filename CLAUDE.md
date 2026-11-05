@@ -147,12 +147,12 @@ bacia. Nomes de fazendas casam com povoados só em *Sussuapara* (#30, 3,9 km) e 
 
 ## O HTML
 
-1,4 MB **autocontido** (sem CDN nem tiles). SVG inline 4403×3588 px, equirretangular, 390 px/grau,
+0,49 MB **autocontido** (190 KB com gzip; sem CDN nem tiles). SVG inline 4403×3588 px, equirretangular, 390 px/grau,
 x corrigido por cos φ: carta de 2923 px + coluna do cartucho (`B.PAD = 1480`, já somado em
 `B.xy()`). Câmera = `transform` do `#mapwrap`, presa à **faixa livre** (`faixa()`/`prendeX`),
 folga `M = 170` px, zoom ≤ 2,4, abertura por `fitZoom()`/`folha()`; arrasto no `#viewport`,
 botões `#zoomctl`, **sem zoom pela roda** (ela rola o texto). Índice em `#topo` (sticky) com `⇄`.
-Sem painel de camadas (`g-uc`, `g-mineral`, `g-mun` escondidos por CSS). Folga ~0,95° E–O e ~0,5°
+Sem painel de camadas (UCs, mineração e municípios nem entram no arquivo). Folga ~0,95° E–O e ~0,5°
 N–S; entorno (`#g-viz`) sob véu de papel, Piauí repintado por cima, fora dele só rios com ≥ 60 km
 no quadro; vegetação definida uma vez e usada com `<use>`. `moldura()` e `cartucho()` (título,
 rosa, legenda só do que se desenha, escala km/léguas). `rotulos_rio()`: corpo pelo comprimento do
@@ -163,6 +163,11 @@ critério no CSS e no JS (`estreito()`); deitado, até o celular pequeno tem o p
 (`--panelW: min(430px, 50vw)`, igual ao `pw` do JS). Em pé, `#gire` cobre a página
 (`CELULAR_EM_PE`): o iPhone não deixa site girar a tela; no Android o botão abre tela cheia e
 trava deitado (`screen.orientation.lock`).
+**Desempenho** (o mapa é redesenhado a cada zoom e troca de seção): `B.d()` grava passos relativos
+e recorta com `corte=` (PI + 0,03°) o que o `clip-path` esconderia, e o `clip-path` continua
+decidindo a borda; nada de filtro SVG (o `feTurbulence` do "grão" era mais da metade do desenho) nem
+de animação fora de `transform`/`opacity` dentro do `#mapwrap`; `resize` só de altura (barra do
+navegador no celular) não move a câmera; `#panel` vem antes do SVG no HTML.
 
 ## Fontes e arquivos
 
